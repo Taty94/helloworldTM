@@ -7,7 +7,7 @@ pipeline {
                 echo 'Pipe started: Running a simple stage with echo'
                 //Get the code from GitHub
                 echo 'Cloning the repo ...'
-                git branch: 'master', url: 'https://github.com/Taty94/helloworldTM.git'
+                git branch: 'develop', url: 'https://github.com/Taty94/helloworldTM.git'
                 //Show the downloeaden files
                 echo 'Verifying that the code has been downloaded'
                 bat 'dir'
