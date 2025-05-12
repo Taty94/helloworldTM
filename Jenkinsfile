@@ -1,6 +1,5 @@
 pipeline {
-    //agent any
-    agent { label 'windows-agent'}
+    agent any
     stages {
         stage ('Get Code') {
             steps {
