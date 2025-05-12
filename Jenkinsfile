@@ -48,9 +48,8 @@ pipeline {
                             echo 'Starting WireMock server ...'
                             
                             bat '''
-                                start java -jar C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworld\\test\\wiremock\\wiremock.jar --port 9090 --root-dir C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworld\\test\\wiremock
+                                start java -jar C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworld\\test\\wiremock\\wiremock-standalone-4.0.0-beta.2.jar --port 9090 --root-dir C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworld\\test\\wiremock
                                 set PYTHONPATH=.
-                                
                             '''
 
                             echo 'Running service tests ...'
