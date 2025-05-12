@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    //agent any
+    agent { label 'windows-agent'}
     stages {
         stage ('Get Code') {
             steps {
@@ -43,19 +44,15 @@ pipeline {
                                 set FLASK_APP=app\\api.py
                                 start flask run
                             '''
-                            // Verifying Flask server
-                            bat 'curl http://127.0.0.1:5000'
-                            // Starting WireMock server
+                            
                             echo 'Starting WireMock server ...'
+                            
                             bat '''
-                                start java -jar C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworldTM\\test\\wiremock\\wiremock-standalone-4.0.0-beta.2.jar --port 9090 --root-dir C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworldTM\\test\\wiremock > wiremock.log 2>&1
+                                start java -jar C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworld\\test\\wiremock\\wiremock.jar --port 9090 --root-dir C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworld\\test\\wiremock
                                 set PYTHONPATH=.
+                                
                             '''
-                            // Wait for WireMock to start
-                            //bat 'ping 127.0.0.1 -n 21 > nul'
-                            // Wait for WireMock to start using Python script
-                            bat 'python C:\\TATIANA\\UNIR\\Modulo2\\CP1-A\\helloworldTM\\check_wiremock.py'
-                            // Run Service Unit Test
+
                             echo 'Running service tests ...'
                             bat 'pytest --junitxml=result-rest.xml test\\rest'
                         }
